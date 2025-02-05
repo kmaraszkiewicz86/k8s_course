@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx
+  labels:
+    tier: frontend
+    team: blue
+  annotations:
+    myapp.io/checksum-value: ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad
+spec:
+  containers:
+    - name: nginx
+      image: nginx:1.23.4
