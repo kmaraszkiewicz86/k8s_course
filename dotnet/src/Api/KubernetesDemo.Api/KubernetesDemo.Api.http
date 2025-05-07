@@ -1,0 +1,37 @@
+@KubernetesDemo.Api_HostAddress = http://localhost:5093
+
+### Pobierz wszystkie TodoItem
+GET {{KubernetesDemo.Api_HostAddress}}/api/TodoItem HTTP/1.1
+
+###
+
+### Pobierz TodoItem o podanym id
+GET {{KubernetesDemo.Api_HostAddress}}/api/TodoItem/1 HTTP/1.1
+
+###
+
+### Utwórz nowy TodoItem
+POST {{KubernetesDemo.Api_HostAddress}}/api/TodoItem HTTP/1.1
+Content-Type: application/json
+
+{
+  "name": "Nowe zadanie",
+  "isComplete": false
+}
+
+###
+
+### Zaktualizuj istniej¹cy TodoItem
+PUT {{KubernetesDemo.Api_HostAddress}}/api/TodoItem HTTP/1.1
+Content-Type: application/json
+
+{
+  "id": 1,
+  "name": "Zaktualizowane zadanie",
+  "isComplete": true
+}
+
+###
+
+### Usuñ TodoItem o podanym id
+DELETE {{KubernetesDemo.Api_HostAddress}}/api/TodoItem/1 HTTP/1.1

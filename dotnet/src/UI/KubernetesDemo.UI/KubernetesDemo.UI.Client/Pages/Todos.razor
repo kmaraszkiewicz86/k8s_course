@@ -1,0 +1,51 @@
+﻿@page "/todos"
+@using KubernetesDemo.UI.Client.Models
+@using KubernetesDemo.UI.Client.Services
+@inject ITodoApi TodoApi
+
+<h3>Todo CRUD (Refit)</h3>
+
+<input @bind="newTodoTitle" placeholder="Nowe zadanie" />
+<button @onclick="Add">Dodaj</button>
+
+<ul>
+@foreach (var t in todos)
+{
+        <li>
+            <!-- używamy manualnego onchange bez @bind, by uniknąć konfliktu -->
+            <input type="checkbox" checked="@t.IsDone" @onchange="async e => await OnCheckboxChanged(t, e)" />
+            @t.Title
+            <button @onclick="() => Delete(t.Id)">usuń</button>
+        </li>
+}
+</ul>
+
+@code {
+    private List<TodoItem> todos = new();
+    private string newTodoTitle = "";
+
+    protected override async Task OnInitializedAsync()
+    {
+        todos = await TodoApi.GetTodosAsync();
+    }
+
+    private async Task Add()
+    {
+        var created = await TodoApi.CreateTodoAsync(new TodoItem { Title = newTodoTitle, IsDone = false });
+        todos.Add(created);
+        newTodoTitle = "";
+    }
+
+    private async Task OnCheckboxChanged(TodoItem item, ChangeEventArgs e)
+    {
+        // odczytujemy nową wartość i wysyłamy update
+        item.IsDone = (bool)e.Value!;
+        await TodoApi.UpdateTodoAsync(item);
+    }
+
+    private async Task Delete(int id)
+    {
+        await TodoApi.DeleteTodoAsync(id);
+        todos.RemoveAll(x => x.Id == id);
+    }
+}

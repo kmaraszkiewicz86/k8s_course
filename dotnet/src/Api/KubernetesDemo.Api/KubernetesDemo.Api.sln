@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35931.197 d17.13
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KubernetesDemo.Api", "KubernetesDemo.Api.csproj", "{00E8BB5D-3396-48B3-9479-47B0A586D26B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{00E8BB5D-3396-48B3-9479-47B0A586D26B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{00E8BB5D-3396-48B3-9479-47B0A586D26B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{00E8BB5D-3396-48B3-9479-47B0A586D26B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{00E8BB5D-3396-48B3-9479-47B0A586D26B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {53311323-6D0A-40DB-B092-4657A24BFDFE}
+	EndGlobalSection
+EndGlobal
