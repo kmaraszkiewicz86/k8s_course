@@ -5,7 +5,7 @@ metadata:
 spec:
   type: ClusterIP
   selector:
-    app: mydotnetapi
+    app: kubernetesdemoapi
   ports:
     - name: http        
       port: 8080    
@@ -15,14 +15,14 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name:  kubernetesdemo.api
+  name:  kubernetesdemoapi
   namespace: default
   labels:
-    app:  kubernetesdemo.api
+    app:  kubernetesdemoapi
 spec:
   selector:
     matchLabels:
-      app: kubernetesdemo.api
+      app: kubernetesdemoapi
   replicas: 3
   strategy:
     rollingUpdate:
@@ -32,7 +32,7 @@ spec:
   template:
     metadata:
       labels:
-        app:  kubernetesdemo.api
+        app:  kubernetesdemoapi
     spec:
       volumes:
         - name:  local-data
@@ -40,8 +40,8 @@ spec:
             path:  /data
             type:  DirectoryOrCreate
       containers:
-      - name:  kubernetesdemo.api
-        image:  kubernetesdemo.api:latest
+      - name:  kubernetesdemoapi
+        image:  kubernetesdemo.api:0.1
         imagePullPolicy: Never
         resources:
           requests:
@@ -52,4 +52,4 @@ spec:
             memory: 100Mi
         ports:
         - containerPort:  80
-          name:  kubernetesdemo.api
+          name:  kubernetesapi
