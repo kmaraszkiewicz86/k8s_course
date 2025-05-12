@@ -1,16 +1,17 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: mydotnetapi-service
+  name: kubernetesdemoapi
 spec:
-  type: ClusterIP
+  type: NodePort
   selector:
     app: kubernetesdemoapi
   ports:
-    - name: http        
-      port: 8080    
-      targetPort: http  
-      protocol: TCP     
+    - name: http
+      protocol: TCP
+      port: 8080
+      targetPort: 8080
+      nodePort: 30080
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -51,5 +52,5 @@ spec:
             cpu: 100m
             memory: 100Mi
         ports:
-        - containerPort:  80
+        - containerPort:  8080
           name:  kubernetesapi
